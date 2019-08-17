@@ -355,126 +355,133 @@
       
         
           
-            
-          
-        
-      
-    </div>
-    
-    
-    
+            <p>[TOC]<br>搭建个人博客的想法好久之前就有了，我的初衷很简单，就是想从现在开始，养成写作的好习惯，让杂乱的知识变得更有条理；<br>感谢“开源”，让我们有GitHub，Hexo这么好用的工具，在几分钟之内就能搭建一个自己的博客；</p>
+<h1 id="1-安装准备"><a href="#1-安装准备" class="headerlink" title="1 安装准备"></a>1 安装准备</h1><p>Hexo 要配合github pages 使用，需要安装Git作为版本管理工具；<br>Hexo 有点像前端框架Angular(只使用过Angular)需要npm作为包管理工具，因此要安装Node.js;</p>
+<h2 id="1-1-Git"><a href="#1-1-Git" class="headerlink" title="1.1 Git"></a>1.1 Git</h2><p>官网的文档，很详细，全面，考虑到你可能对英语头疼，下面是中文链接；</p>
+<h3 id="1-1-1-安装Git"><a href="#1-1-1-安装Git" class="headerlink" title="1.1.1 安装Git"></a>1.1.1 安装Git</h3><p><a href="https://git-scm.com/book/zh/v2/起步-安装-Git" target="_blank" rel="noopener">安装-Git</a></p>
+<h3 id="1-1-2-用户信息配置"><a href="#1-1-2-用户信息配置" class="headerlink" title="1.1.2 用户信息配置"></a>1.1.2 用户信息配置</h3><p>在安装完成后，你需要设置用户信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name "John Doe"</span><br><span class="line">git config --global user.email johndoe@example.com</span><br></pre></td></tr></table></figure>
 
-    
+<p><a href="https://git-scm.com/book/zh/v2/起步-初次运行-Git-前的配置" target="_blank" rel="noopener">初次运行-Git-前的配置</a></p>
+<h3 id="1-1-3-SSH公钥配置"><a href="#1-1-3-SSH公钥配置" class="headerlink" title="1.1.3 SSH公钥配置"></a>1.1.3 SSH公钥配置</h3><p>如果要想在GitHub等远程仓库推送或者拉取代码，你需要配置SSH Keys，这样你与GitHub等通讯的信息在传输过程中就会被加密；</p>
+<ul>
+<li>生成SSH keys，在Shell(在Windows,使用你前面安装的Git Bash)输入以下命令，然后”Enter” ,”Enter” … <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
 
-    
+</li>
+</ul>
+<p>到当前用户的根目录(~)找到.ssh/id_rsa.pub</p>
+<ul>
+<li>登陆到GitHub账号，导航到Settings-&gt;SSH and GPG keys，点击”New SSH key”,按照页面提示，将id_rsa.pub中的内容全部复制进去，保存。</li>
+</ul>
+<h2 id="1-2-Node-js"><a href="#1-2-Node-js" class="headerlink" title="1.2 Node.js"></a>1.2 Node.js</h2><p><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js下载</a>，安装你所需的版本，这里面我们只需要npm,所以并不需要过多的配置。</p>
+<h2 id="2-Hexo博客搭建"><a href="#2-Hexo博客搭建" class="headerlink" title="2 Hexo博客搭建"></a>2 Hexo博客搭建</h2><h2 id="2-1-一分钟启动你的博客"><a href="#2-1-一分钟启动你的博客" class="headerlink" title="2.1 一分钟启动你的博客"></a>2.1 一分钟启动你的博客</h2><ul>
+<li>在shell输入以下内容</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 全局安装hexo-cli</span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"><span class="meta">#</span> 在当前目录使用hexo init命令初始化博客</span><br><span class="line">hexo init myfirstblog</span><br><span class="line"><span class="meta">#</span> 进入初始化好的博客根目录</span><br><span class="line">cd myfirstblog</span><br><span class="line"><span class="meta">#</span> hexo使用npm作为包管理工具，安装hexo所需要的依赖</span><br><span class="line">npm install</span><br><span class="line"><span class="meta">#</span> hexo generate 生成hexo博客静态文件</span><br><span class="line"><span class="meta">#</span> hexo server 启动hexo本地部署服务器</span><br><span class="line">hexo generate &amp;&amp; hexo sever</span><br></pre></td></tr></table></figure>
 
-    
+<ul>
+<li>在浏览器输入<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 进行访问，你可以看到，你的博客已经启动了。</li>
+</ul>
+<h2 id="2-2-Hexo-配置和命令"><a href="#2-2-Hexo-配置和命令" class="headerlink" title="2.2 Hexo 配置和命令"></a>2.2 Hexo 配置和命令</h2><p>  <a href="https://hexo.io/zh-cn/docs/configuration" target="_blank" rel="noopener">Hexo中文文档-配置</a>，文档很全，很详细，想要用好Hexo，还是去看文档吧；下面的内容适用于你初次使用。</p>
+<h3 id="2-2-1-配置"><a href="#2-2-1-配置" class="headerlink" title="2.2.1 配置"></a>2.2.1 配置</h3><p>  打开<code>_config.yml</code> ，下面是一个hexo网站的配置；</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>title</strong></td>
+<td>网站标题</td>
+</tr>
+<tr>
+<td><strong>subtitle</strong></td>
+<td>网站副标题</td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td>网站描述</td>
+</tr>
+<tr>
+<td><strong>keywords</strong></td>
+<td>网站的关键词。使用半角逗号 <code>,</code> 分隔多个关键词。</td>
+</tr>
+<tr>
+<td><strong>author</strong></td>
+<td>您的名字</td>
+</tr>
+<tr>
+<td><strong>language</strong></td>
+<td>网站使用的语言</td>
+</tr>
+<tr>
+<td><strong>timezone</strong></td>
+<td>网站时区。Hexo 默认使用您电脑的时区。<a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank" rel="noopener">时区列表</a>。比如说：<code>America/New_York</code>, <code>Japan</code>, 和 <code>UTC</code> 。</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-2-常用的命令"><a href="#2-2-2-常用的命令" class="headerlink" title="2.2.2 常用的命令"></a>2.2.2 常用的命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>格式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>init</strong></td>
+<td>hexo init [folder]</td>
+<td>新建一个网站</td>
+</tr>
+<tr>
+<td><strong>generate</strong></td>
+<td>hexo generate 或者hexo g</td>
+<td>生成静态文件</td>
+</tr>
+<tr>
+<td><strong>server</strong></td>
+<td>hexo server 或者 hexo s</td>
+<td>启动服务器</td>
+</tr>
+<tr>
+<td><strong>clean</strong></td>
+<td>hexo clean</td>
+<td>清除缓存文件 (<code>db.json</code>) 和已生成的静态文件 (<code>public</code>)</td>
+</tr>
+<tr>
+<td><strong>new</strong></td>
+<td>hexo new [layout] <title></title></td>
+<td>新建一篇文章，layout 是可选参数</td>
+</tr>
+<tr>
+<td><strong>deploy</strong></td>
+<td>hexo deploy</td>
+<td>部署hexo到远处仓库，比如GitHub</td>
+</tr>
+</tbody></table>
+<h2 id="2-3-部署到GitHub"><a href="#2-3-部署到GitHub" class="headerlink" title="2.3 部署到GitHub"></a>2.3 部署到GitHub</h2><p>在 “2.1 一分钟启动你的博客”中，我们只是在本地启动了博客，如果想要让别人也看到你的网站，就需要把它部署到一个所有人都能看到的地方，GitHub Pages 是一个不错的选择；GitHub 帮我们省去了繁琐的建站流程和建站的必要花费（购买服务器，IP，域名等）。</p>
+<h3 id="2-3-1-创建GitHub-Pages"><a href="#2-3-1-创建GitHub-Pages" class="headerlink" title="2.3.1 创建GitHub Pages"></a>2.3.1 创建GitHub Pages</h3><ul>
+<li>打开GitHub账号，导航到 New Repository , 创建一个Repository Name为“youraccountname.github.io”的公有仓库，这个名字特殊的仓库，就是<a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>；</li>
+</ul>
+<h3 id="2-3-1-将Hexo博客部署到GitHub-Pages"><a href="#2-3-1-将Hexo博客部署到GitHub-Pages" class="headerlink" title="2.3.1 将Hexo博客部署到GitHub Pages"></a>2.3.1 将Hexo博客部署到GitHub Pages</h3><ul>
+<li><p>打开<code>_config.yml</code>,找到对应的位置，用创建的<a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>的仓库地址替换“repo”位置的地址；</p>
+<p><strong>注意：”branch” 必须是master，GitHub Pages 默认使用master 分支</strong>；</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="string">git@github.com:youraccountname/youraccountname.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
 
-    <footer class="post-footer">
-      
 
-      
+</li>
+</ul>
+<ul>
+<li><p>使用hexo deploy 命令将本地代码推送到<a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在浏览器地址栏输入<a href="https://youraccountname.github.io" target="_blank" rel="noopener">https://youraccountname.github.io</a></p>
+</li>
+</ul>
+<h1 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h1><ul>
+<li><a href="https://www.typora.io" target="_blank" rel="noopener">Typora</a> 是一款不错的Markdown 编辑工具</li>
+</ul>
 
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://openeye.top/2019/08/14/home/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zlibin">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="David Cafe">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/14/home/" itemprop="url">home</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-14T22:47:33+08:00">
-                2019-08-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
           
         
       
@@ -555,7 +562,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
