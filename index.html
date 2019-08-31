@@ -262,6 +262,270 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://openeye.top/2019/08/17/http/http-message/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zlibin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="David Cafe">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/17/http/http-message/" itemprop="url">HTTP拾遗（之）HTTP报文（三）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T19:35:10+08:00">
+                2019-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTTP拾遗/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP拾遗</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h1><p>http报文由三部分组成：</p>
+<ul>
+<li>start line (起始行)</li>
+<li>header（首部块）</li>
+<li>body（数据主体，这一部分为可选）</li>
+</ul>
+<p>起始行和首部是由行分隔的ASCII文本，每一行以回车符（ASCII码13）和换行符（ASCII码10）结束；</p>
+<h2 id="1-1-HTTP请求报文格式"><a href="#1-1-HTTP请求报文格式" class="headerlink" title="1.1 HTTP请求报文格式"></a>1.1 HTTP请求报文格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;method&gt; &lt;request-URL&gt; &lt;version&gt;</span><br><span class="line">&lt;headers&gt;</span><br><span class="line">（空行）</span><br><span class="line">&lt;entity-body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /test/hi.there.txt HTTP/1.1</span><br><span class="line">Accept: text/*</span><br><span class="line">Host: www.joes-hardware.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-HTTP响应报文格式"><a href="#1-2-HTTP响应报文格式" class="headerlink" title="1.2 HTTP响应报文格式"></a>1.2 HTTP响应报文格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;version&gt; &lt;status&gt; &lt;reason-phrase&gt;</span><br><span class="line">&lt;headers&gt; </span><br><span class="line">（空行）</span><br><span class="line">&lt;entity-body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Content-type: text/plain</span><br><span class="line">Content-length: 19</span><br><span class="line"></span><br><span class="line">Hi,I&apos;m a message</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-状态码"><a href="#1-3-状态码" class="headerlink" title="1.3 状态码"></a>1.3 状态码</h2><table>
+<thead>
+<tr>
+<th>状态码范围</th>
+<th>分类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>100 ～ 199</td>
+<td>信息提示</td>
+</tr>
+<tr>
+<td>200 ～ 299</td>
+<td>成功</td>
+</tr>
+<tr>
+<td>300 ～ 399</td>
+<td>重定向</td>
+</tr>
+<tr>
+<td>400 ～ 499</td>
+<td>客户端错误</td>
+</tr>
+<tr>
+<td>500 ～ 599</td>
+<td>服务器端错误</td>
+</tr>
+</tbody></table>
+<h2 id="1-4-方法"><a href="#1-4-方法" class="headerlink" title="1.4 方法"></a>1.4 方法</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>从服务器获取一份文档</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>与GET方法行为类似，但服务器在应答报文中只返回头部信息</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>向服务器输入数据,用来创建资源，不具有幂等性</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>向服务器写入文档，用来更新资源，具有幂等性</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td>对可能经过代理服务器传送到服务器上的报文进行追踪</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>获取服务器支持的方法类型</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>从服务器上删除一份文档</td>
+</tr>
+</tbody></table>
+<h2 id="1-5-HTTP和HTTPS"><a href="#1-5-HTTP和HTTPS" class="headerlink" title="1.5 HTTP和HTTPS"></a>1.5 HTTP和HTTPS</h2><p>HTTP就是HTTP over TCP over IP，其安全版本HTTPS就是在HTTP和TCP之间插入一个密码加密层。</p>
+<table>
+<thead>
+<tr>
+<th>HTTPS网络协议栈</th>
+<th>所在层</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HTTP</td>
+<td>应用层</td>
+</tr>
+<tr>
+<td>TSL或SSL</td>
+<td>安全层(HTTP没有)</td>
+</tr>
+<tr>
+<td>TCP</td>
+<td>传输层</td>
+</tr>
+<tr>
+<td>IP</td>
+<td>网络层</td>
+</tr>
+<tr>
+<td>网络接口</td>
+<td>数据链路层</td>
+</tr>
+<tr>
+<td>信号和介质</td>
+<td>物理层</td>
+</tr>
+</tbody></table>
+<p>每个TCP段都是由IP分组承载，从一个IP地址转发到另一个IP地址，每个IP分组中都包括：</p>
+<ul>
+<li><p>一个IP分组首部（通常为20字节）</p>
+</li>
+<li><p>一个TCP段首部（通常为20字节）</p>
+</li>
+<li><p>一个TCP数据块（0个或多个字节）</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://openeye.top/2019/08/17/http/summary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1309,7 +1573,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
