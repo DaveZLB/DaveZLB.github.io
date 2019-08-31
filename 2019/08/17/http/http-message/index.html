@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="David Cafe">
 <meta property="og:description" content="HTTP报文http报文由三部分组成：  start line (起始行) header（首部块） body（数据主体，这一部分为可选）  起始行和首部是由行分隔的ASCII文本，每一行以回车符（ASCII码13）和换行符（ASCII码10）结束； 1.1 HTTP请求报文格式1234&amp;lt;method&amp;gt; &amp;lt;request-URL&amp;gt; &amp;lt;version&amp;gt;&amp;lt;hea">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-31T02:22:15.915Z">
+<meta property="og:updated_time" content="2019-08-31T03:32:22.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP拾遗（之）HTTP报文（三）">
 <meta name="twitter:description" content="HTTP报文http报文由三部分组成：  start line (起始行) header（首部块） body（数据主体，这一部分为可选）  起始行和首部是由行分隔的ASCII文本，每一行以回车符（ASCII码13）和换行符（ASCII码10）结束； 1.1 HTTP请求报文格式1234&amp;lt;method&amp;gt; &amp;lt;request-URL&amp;gt; &amp;lt;version&amp;gt;&amp;lt;hea">
@@ -555,8 +555,7 @@
   
     <div class="comments" id="comments">
       
-        <div onclick="showGitment()" id="gitment-display-button">Show comments from Gitment</div>
-        <div id="gitment-container" style="display:none"></div>
+        <div id="gitment-container"></div>
       
     </div>
 
@@ -901,11 +900,7 @@
       }
 
       
-      function showGitment(){
-        document.getElementById("gitment-display-button").style.display = "none";
-        document.getElementById("gitment-container").style.display = "block";
-        renderGitment();
-      }
+      renderGitment();
       
       </script>
     

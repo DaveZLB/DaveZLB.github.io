@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="David Cafe">
 <meta property="og:description" content="搭建个人博客的想法好久之前就有了，我的初衷很简单，就是想从现在开始，养成写作的好习惯，让杂乱的知识变得更有条理；感谢“开源”，让我们有GitHub，Hexo这么好用的工具，在几分钟之内就能搭建一个自己的博客； 1 安装准备Hexo 要配合github pages 使用，需要安装Git作为版本管理工具；Hexo 有点像前端框架Angular(只使用过Angular)需要npm作为包管理工具，因此要安">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-17T14:53:50.658Z">
+<meta property="og:updated_time" content="2019-08-31T03:31:57.325Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo博客记（一）">
 <meta name="twitter:description" content="搭建个人博客的想法好久之前就有了，我的初衷很简单，就是想从现在开始，养成写作的好习惯，让杂乱的知识变得更有条理；感谢“开源”，让我们有GitHub，Hexo这么好用的工具，在几分钟之内就能搭建一个自己的博客； 1 安装准备Hexo 要配合github pages 使用，需要安装Git作为版本管理工具；Hexo 有点像前端框架Angular(只使用过Angular)需要npm作为包管理工具，因此要安">
@@ -559,8 +559,7 @@
   
     <div class="comments" id="comments">
       
-        <div onclick="showGitment()" id="gitment-display-button">Show comments from Gitment</div>
-        <div id="gitment-container" style="display:none"></div>
+        <div id="gitment-container"></div>
       
     </div>
 
@@ -905,11 +904,7 @@
       }
 
       
-      function showGitment(){
-        document.getElementById("gitment-display-button").style.display = "none";
-        document.getElementById("gitment-container").style.display = "block";
-        renderGitment();
-      }
+      renderGitment();
       
       </script>
     
